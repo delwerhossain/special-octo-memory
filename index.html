@@ -1,131 +1,154 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     </script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {"50":"#fff1f2","100":"#ffe4e6","200":"#fecdd3","300":"#fda4af","400":"#fb7185","500":"#f43f5e","600":"#e11d48","700":"#be123c","800":"#9f1239","900":"#881337"}
-                    }
-                },
-                fontFamily: {
-                    'body': [
-                        'Montserrat',
-                        'ui-sans-serif',
-                        'system-ui',
-                        '-apple-system',
-                        'system-ui',
-                        'Segoe UI',
-                        'Roboto',
-                        'Helvetica Neue',
-                        'Arial',
-                        'Noto Sans',
-                        'sans-serif',
-                        'Apple Color Emoji',
-                        'Segoe UI Emoji',
-                        'Segoe UI Symbol',
-                        'Noto Color Emoji'
-                    ],
-                    'sans': [
-                        'Montserrat',
-                        'ui-sans-serif',
-                        'system-ui',
-                        '-apple-system',
-                        'system-ui',
-                        'Segoe UI',
-                        'Roboto',
-                        'Helvetica Neue',
-                        'Arial',
-                        'Noto Sans',
-                        'sans-serif',
-                        'Apple Color Emoji',
-                        'Segoe UI Emoji',
-                        'Segoe UI Symbol',
-                        'Noto Color Emoji'
-                    ]
-                }
-            }
-        }
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#fff1f2",
+                100: "#ffe4e6",
+                200: "#fecdd3",
+                300: "#fda4af",
+                400: "#fb7185",
+                500: "#f43f5e",
+                600: "#e11d48",
+                700: "#be123c",
+                800: "#9f1239",
+                900: "#881337",
+              },
+            },
+          },
+          fontFamily: {
+            body: [
+              "Montserrat",
+              "ui-sans-serif",
+              "system-ui",
+              "-apple-system",
+              "system-ui",
+              "Segoe UI",
+              "Roboto",
+              "Helvetica Neue",
+              "Arial",
+              "Noto Sans",
+              "sans-serif",
+              "Apple Color Emoji",
+              "Segoe UI Emoji",
+              "Segoe UI Symbol",
+              "Noto Color Emoji",
+            ],
+            sans: [
+              "Montserrat",
+              "ui-sans-serif",
+              "system-ui",
+              "-apple-system",
+              "system-ui",
+              "Segoe UI",
+              "Roboto",
+              "Helvetica Neue",
+              "Arial",
+              "Noto Sans",
+              "sans-serif",
+              "Apple Color Emoji",
+              "Segoe UI Emoji",
+              "Segoe UI Symbol",
+              "Noto Color Emoji",
+            ],
+          },
+        },
+      };
     </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
-</head>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<body class="bg-white dark:bg-gray-900 ">
-
+  <body class="bg-white dark:bg-gray-900">
     <header>
-        <nav
-          class="mx-4 my-4 border dark:border-gray-600 rounded-lg py-2 text-center flex justify-center"
+      <nav
+        class="mx-4 my-4 border dark:border-gray-600 rounded-lg py-2 text-center flex justify-center"
+      >
+        <button
+          id="theme-toggle"
+          type="button"
+          class="border-2 border-gray-300 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mx-4"
         >
-          <button
-            id="theme-toggle"
-            type="button"
-            class="border-2 border-gray-300 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mx-4"
+          <svg
+            id="theme-toggle-dark-icon"
+            class="hidden w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              id="theme-toggle-dark-icon"
-              class="hidden w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
-              ></path>
-            </svg>
-            <svg
-              id="theme-toggle-light-icon"
-              class="hidden w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
+            <path
+              d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+            ></path>
+          </svg>
+          <svg
+            id="theme-toggle-light-icon"
+            class="hidden w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div class="">
+          <h1 class="text-2xl dark:text-white font-bold mb-4">
+            AI Universe Hub
+          </h1>
+          <button
+            type="button"
+            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          >
+            Sort By Date
           </button>
-          <div class="">
-            <h1 class="text-2xl dark:text-white font-bold mb-4
-            "> AI Universe Hub</h1>
-            <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sort By Date
-                </button>
-          </div>
-        </nav>
-      </header>
+        </div>
+      </nav>
+    </header>
 
     <!-- Breadcrumb -->
 
-
     <!-- Breadcrumb -->
-
 
     <!--------------------------------------
        customization part start here  
     --------------------------------------->
 
-
-    
-    <section class="container border border-gray-200 dark:border-gray-700 mx-auto my-12">
-        <div id="main-contain" class="grid gap-4 mx-4 my-4 md:grid-cols-2 lg:grid-cols-3 justify-center">
-            
-<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
-  <a href="#">
+    <section
+      class="container border rounded-lg border-gray-200 dark:border-gray-700 mx-auto my-12"
+    >
+      <div
+        id="main-contain"
+        class="grid gap-4 mx-4 my-4 md:grid-cols-2 lg:grid-cols-3 justify-center"
+      >
+        <div
+          class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700"
+        >
+          <!-- <a href="#">
       <img class="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg
       " alt="" />
   </a>
@@ -133,21 +156,20 @@
       <a href="#">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Features</h5>
       </a>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"> 1. Natural language processing <br> 2. Contextual understanding <br> 3. Text generation</p>
+      <p class="mb-3 font-normal text-gray-500  dark:text-gray-400"> 1. Natural language processing <br> 2. Contextual understanding <br> 3. Text generation</p>
       <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
       <a href="#">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">ChatGPT</h5>
       </a>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"> 11/01/2022 </p>
+      <p class="mb-3 font-normal text-gray-500  dark:text-gray-400"> 11/01/2022 </p>
       <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
           Read more
           <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
       </a>
-  </div>
-</div>
+  </div> -->
+        </div>
 
-
-            <!-- 
+        <!-- 
               ---------------------------------------------------------------------------------------------
               ---------------------------------------------------------------------------------------------
                                   card part
@@ -156,29 +178,37 @@
               ---------------------------------------------------------------------------------------------
               ---------------------------------------------------------------------------------------------
              -->
-                  </div>
+      </div>
+
+      <div class="my-12 grid justify-items-center">
+        <button
+          class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+        >
+          <span
+            class="relative px-10 py-5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-2xl"
+          >
+            See All
+          </span>
+        </button>
+      </div>
     </section>
-
-
-
 
     <!--------------------------------------
        customization part ends here  
     --------------------------------------->
 
-
     <!-- footer  -->
-
-
 
     <!--------------------- 
        flowframe  part 
     ----------------------->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="./js/darkMode.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/index.js"></script>
+
     <!--------------------- 
       flowframe  part ends   
     ----------------------->
-</body>
-
+  </body>
 </html>
